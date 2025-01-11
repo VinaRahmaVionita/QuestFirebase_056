@@ -14,6 +14,23 @@ class InsertViewModel (
 ) : ViewModel(){
 
 
+    //Menyimpan data mahasiswa ke dalam database
+    fun insertMhs() {
+        if (validateFields()) {
+            viewModelScope.launch {
+                uiState = FormState.Loading
+                try {
+                    mhs.insertMahasiswa(uiEvent.insertUiEvent.toMhsModel())
+                    uiState = FormState.Success("Data berhasil disimpan")
+                } catch (e: Exception) {
+                    uiState = FormState.Error("Data gagal disimpan")
+                }
+            }
+        } else {
+            uiState = FormState.Error("Data tidak valid")
+        }
+    }
+
     //Mereset semua input form dan status menjadi kondisi awal
     fun resetForm() {
         uiEvent = InsertUiState()

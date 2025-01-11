@@ -13,7 +13,12 @@ class InsertViewModel (
     private val mhs: MahasiswaRepository //untuk menyimpan data ke dalam database
 ) : ViewModel(){
 
-
+    // Memperbarui state berdasarkan input pengguna
+    fun updateState(mahasiswaEvent: MahasiswaEvent) {
+        uiEvent = uiEvent.copy(
+            insertUiEvent = mahasiswaEvent,
+        )
+    }
     // Validasi data input pengguna
     fun validateFields(): Boolean {
         val event = uiEvent.insertUiEvent

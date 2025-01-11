@@ -9,7 +9,16 @@ import com.example.project9.model.Mahasiswa
 import com.example.project9.repository.MahasiswaRepository
 import kotlinx.coroutines.launch
 
+class InsertViewModel (
+    private val mhs: MahasiswaRepository //untuk menyimpan data ke dalam database
+) : ViewModel(){
 
+
+    //Menghapus pesan status (misalnya "berhasil" atau "gagal") untuk mengembalikan form ke kondisi awal
+    fun resetSnackBarMessage() {
+        uiState = FormState.Idle
+    }
+}
 
 //Mengatur status form
 sealed class FormState {

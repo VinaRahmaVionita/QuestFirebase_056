@@ -44,7 +44,43 @@ import com.example.project9.ui.theme.viewmodel.HomeUiState
 import com.example.project9.ui.theme.viewmodel.HomeViewModel
 import com.example.project9.ui.theme.viewmodel.PenyediaViewModel
 
-
+@RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HomeScreen(
+    navigateToItemEntry: () -> Unit,
+    modifier: Modifier = Modifier,
+    onDetailClick: (String) -> Unit = {},
+    viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory),
+){
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+    Scaffold(
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        topBar = {
+            TopAppBar(title = { Text("Home")})
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = navigateToItemEntry,
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.
+                padding(18.
+                dp)
+            ) {
+                Icon(imageVector = Icons.Default.Add, contentDescription = "Add Mahasiswa")
+            }
+        },
+    ) { innerPadding ->
+        HomeStatus(
+            homeUiState = viewModel.mhsUIState,
+            retryAction = { viewModel.getMhs() }, modifier = Modifier.padding(innerPadding),
+            onDetailClick = onDetailClick,
+            onDeleteClick = {
+                viewModel.deleteMhs(it)
+            },
+        )
+    }
+}
 
 @Composable
 fun HomeStatus(

@@ -47,6 +47,18 @@ import com.example.project9.ui.theme.viewmodel.PenyediaViewModel
 
 
 @Composable
+fun OnLoading(modifier: Modifier = Modifier) {
+    Column (
+        modifier = Modifier
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ){
+        Text("Loading.....")
+    }
+}
+
+@Composable
 fun OnError(
     message: String,
     retryAction: () -> Unit,

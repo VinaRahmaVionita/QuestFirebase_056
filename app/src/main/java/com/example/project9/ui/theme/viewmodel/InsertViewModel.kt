@@ -12,7 +12,8 @@ import kotlinx.coroutines.launch
 class InsertViewModel (
     private val mhs: MahasiswaRepository //untuk menyimpan data ke dalam database
 ) : ViewModel(){
-
+    var uiEvent: InsertUiState by mutableStateOf(InsertUiState())
+        private set //Menyimpan data input dari pengguna (status form saat ini)
     var uiState: FormState by mutableStateOf(FormState.Idle)
         private set //Menyimpan status form, seperti apakah form sedang idle, loading, berhasil, atau error
     // Memperbarui state berdasarkan input pengguna

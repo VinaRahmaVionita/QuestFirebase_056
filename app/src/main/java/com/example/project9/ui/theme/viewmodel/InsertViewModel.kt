@@ -11,6 +11,14 @@ import kotlinx.coroutines.launch
 
 
 
+//Mengatur status form
+sealed class FormState {
+    object Idle : FormState()
+    object Loading : FormState()
+    data class Success(val message: String) : FormState()
+    data class Error(val message: String) : FormState()
+}
+
 //Menyimpan data input form dan status validasi
 data class InsertUiState(
     val insertUiEvent: MahasiswaEvent = MahasiswaEvent(),

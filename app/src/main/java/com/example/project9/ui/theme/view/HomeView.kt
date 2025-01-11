@@ -47,6 +47,25 @@ import com.example.project9.ui.theme.viewmodel.PenyediaViewModel
 
 
 @Composable
+fun OnError(
+    message: String,
+    retryAction: () -> Unit,
+    modifier: Modifier = Modifier) {
+    Column(
+        modifier =
+        modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = message, modifier = Modifier.padding(16.dp))
+        Button(onClick =
+        retryAction) {
+            Text("Retry")
+        }
+    }
+}
+
+@Composable
 fun MhsLayout(
     mahasiswa: List<Mahasiswa>,
     modifier: Modifier = Modifier,

@@ -11,6 +11,12 @@ import kotlinx.coroutines.launch
 
 
 
+//Menyimpan data input form dan status validasi
+data class InsertUiState(
+    val insertUiEvent: MahasiswaEvent = MahasiswaEvent(),
+    val isEntryValid: FormErrorState = FormErrorState(),
+)
+
 //Menyimpan status validasi untuk setiap field form
 data class FormErrorState(
     val nim: String? = null,

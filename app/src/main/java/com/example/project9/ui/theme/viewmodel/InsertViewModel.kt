@@ -14,6 +14,12 @@ class InsertViewModel (
 ) : ViewModel(){
 
 
+    //Mereset semua input form dan status menjadi kondisi awal
+    fun resetForm() {
+        uiEvent = InsertUiState()
+        uiState = FormState.Idle
+    }
+
     //Menghapus pesan status (misalnya "berhasil" atau "gagal") untuk mengembalikan form ke kondisi awal
     fun resetSnackBarMessage() {
         uiState = FormState.Idle

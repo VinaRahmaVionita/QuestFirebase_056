@@ -13,6 +13,8 @@ class InsertViewModel (
     private val mhs: MahasiswaRepository //untuk menyimpan data ke dalam database
 ) : ViewModel(){
 
+    var uiState: FormState by mutableStateOf(FormState.Idle)
+        private set //Menyimpan status form, seperti apakah form sedang idle, loading, berhasil, atau error
     // Memperbarui state berdasarkan input pengguna
     fun updateState(mahasiswaEvent: MahasiswaEvent) {
         uiEvent = uiEvent.copy(

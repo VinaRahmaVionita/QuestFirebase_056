@@ -11,6 +11,16 @@ import kotlinx.coroutines.launch
 
 
 
+//data class Variabel yang menyimpan data input form
+data class MahasiswaEvent(
+    val nim: String = "",
+    val nama: String = "",
+    val jenis_kelamin: String = "",
+    val alamat: String = "",
+    val kelas: String = "",
+    val angkatan: String = ""
+)
+
 //menyimpan input form kedalam entity
 fun MahasiswaEvent.toMhsModel(): Mahasiswa = Mahasiswa(
     nim = nim,

@@ -5,9 +5,12 @@ import androidx.annotation.RequiresExtension
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.project9.ui.theme.view.DetailView
 import com.example.project9.ui.theme.view.HomeScreen
 import com.example.project9.ui.theme.view.InsertMhsView
 
@@ -34,6 +37,23 @@ fun PengelolaHalaman(
                 onBack = { navController.popBackStack() },
                 onNavigate = {
                     navController.navigate(DestinasiHome.route)
+                }
+            )
+        }
+        composable(DestinasiDetail.routeWithArgs,
+            arguments = listOf(
+                navArgument(DestinasiDetail.NIM){
+                    type = NavType.StringType
+                }
+            )
+        ) {
+            DetailView(
+                NavigateBack = {
+                    navController.navigate(DestinasiHome.route) {
+                        popUpTo(DestinasiHome.route) {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }

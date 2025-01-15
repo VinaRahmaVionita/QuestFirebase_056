@@ -31,7 +31,10 @@ class InsertViewModel (
                     jenis_kelamin = if (event.jenis_kelamin.isNotEmpty()) null else "Jenis Kelamin tidak boleh kosong",
                     alamat = if (event.alamat.isNotEmpty()) null else "Alamat tidak boleh kosong",
                     kelas = if (event.kelas.isNotEmpty()) null else "Kelas tidak boleh kosong",
-                    angkatan = if (event.angkatan.isNotEmpty()) null else "Angkatan tidak boleh kosong"
+                    angkatan = if (event.angkatan.isNotEmpty()) null else "Angkatan tidak boleh kosong",
+                    judul_skripsi = if (event.judul_skripsi.isNotEmpty()) null else "Judul skripsi tidak boleh kosong",
+                    dospem1 = if (event.dospem1.isNotEmpty()) null else "Dosen pembimbing 1 tidak boleh kosong",
+                    dospem2 = if (event.dospem2.isNotEmpty()) null else "Dosen pembimbing 2 tidak boleh kosong"
         )
         uiEvent = uiEvent.copy(isEntryValid = errorState)
         return errorState.isValid()
@@ -87,11 +90,15 @@ data class FormErrorState(
     val jenis_kelamin: String? = null,
     val alamat: String? = null,
     val kelas: String? = null,
-    val angkatan: String? = null
+    val angkatan: String? = null,
+    val judul_skripsi: String? = null,
+    val dospem1: String? = null,
+    val dospem2: String? = null
 ) {
     fun isValid(): Boolean {
         return nim == null && nama == null && jenis_kelamin == null &&
-                alamat == null && kelas == null && angkatan == null
+                alamat == null && kelas == null && angkatan == null &&
+                judul_skripsi == null && dospem1 == null && dospem2 == null
     }
 }
 
@@ -102,8 +109,12 @@ data class MahasiswaEvent(
     val jenis_kelamin: String = "",
     val alamat: String = "",
     val kelas: String = "",
-    val angkatan: String = ""
+    val angkatan: String = "",
+    val judul_skripsi: String = "",
+    val dospem1: String = "",
+    val dospem2: String = ""
 )
+
 
 //menyimpan input form kedalam entity
 fun MahasiswaEvent.toMhsModel(): Mahasiswa = Mahasiswa(
@@ -112,5 +123,8 @@ fun MahasiswaEvent.toMhsModel(): Mahasiswa = Mahasiswa(
     jenis_kelamin = jenis_kelamin,
     alamat = alamat,
     kelas = kelas,
-    angkatan = angkatan
+    angkatan = angkatan,
+    judul_skripsi = judul_skripsi,
+    dospem1 = dospem1,
+    dospem2 = dospem2
 )

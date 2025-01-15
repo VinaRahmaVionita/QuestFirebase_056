@@ -1,7 +1,5 @@
 package com.example.project9.ui.theme.viewmodel
 
-import android.os.Build
-import androidx.annotation.RequiresExtension
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
@@ -18,6 +16,12 @@ object PenyediaViewModel {
         }
         initializer {
             InsertViewModel(
+                mahasiswaApplications().container.mahasiswaRepository
+            )
+        }
+        initializer {
+            DetailViewModel(
+                createSavedStateHandle(),
                 mahasiswaApplications().container.mahasiswaRepository
             )
         }
